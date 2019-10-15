@@ -25,7 +25,7 @@ SECRET_KEY = '4s24e%%85+f&$)1748&@*ibvgmy!7k2s)lro)fb9hye^*zf2lb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["app.ashishbhoi.com"]
 
 
 # Application definition
