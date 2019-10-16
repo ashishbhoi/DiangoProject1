@@ -1,0 +1,18 @@
+name: gcloud
+on: [push]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - run: echo SECURE_SSL_REDIRECT = True >test.py
+      - run: cat FirstProject/settings.py test.py > FirstProject/settings.pysettings.py
+      - uses: exelban/gcloud@master
+        env:
+          PROJECT_ID: ${{secrets.PROJECT_ID}}
+          APPLICATION_CREDENTIALS: ${{secrets.SERVICE_ACCOUNT}}
+        with:
+          args: app deploy app.yaml
