@@ -24,7 +24,7 @@ SECRET_KEY = '4s24e%%85+f&$)1748&@*ibvgmy!7k2s)lro)fb9hye^*zf2lb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["app.ashishbhoi.com", "ubuntu.ashishbhoi.com"]
+ALLOWED_HOSTS = ["app.ashishbhoi.com", "ubuntu.ashishbhoi.com", "127.0.0.1"]
 
 # Application definition
 
@@ -50,15 +50,19 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'FirstProject.urls'
 
 TEMPLATES = [
-    dict(BACKEND='django.template.backends.django.DjangoTemplates', DIRS=[os.path.join(BASE_DIR, 'templates')],
-         APP_DIRS=True, OPTIONS={
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        }),
+        },
+    },
 ]
 
 WSGI_APPLICATION = 'FirstProject.wsgi.application'
