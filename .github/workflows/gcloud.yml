@@ -8,8 +8,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - run: echo SECURE_SSL_REDIRECT = True >test.py
-      - run: cat FirstProject/settings.py test.py > FirstProject/settings.pysettings.py
+      - name: https redirect
+        run: echo SECURE_SSL_REDIRECT = True >test.py && cat FirstProject/settings.py test.py > FirstProject/settings.pysettings.py && rm test.py
+      - name: node packages
+        run: mkdir static &&npm install @fortawesome/fontawesome-free --prefix static && npm install bootstrap --prefix static && npm install jquery --prefix static && npm install popper.js --prefix static
       - uses: exelban/gcloud@master
         env:
           PROJECT_ID: ${{secrets.PROJECT_ID}}
