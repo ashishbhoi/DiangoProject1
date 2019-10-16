@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#343a40">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="ASHISH KUMAR BHOI, SRISHTI SRIVASTAVA, ROHAN SHROTHRIUM">
+    <meta name="description"
+          content="Course Management System for IIT Dharwad together with online survey on past courses.">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Title -->
+    {% if title %}
+        <title>Django Project - {{ title }}</title>
+    {% else %}
+        <title>Django Project</title>
+    {% endif %}
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'node_modules/@fortawesome/fontawesome-free/css/all.min.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Titillium Web', sans-serif;
+        }
+    </style>
+</head>
+<body>
+<!-- NavBar -->
+<nav class="navbar navbar-default fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Django Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <ul class="nav navbar-nav navbar-left padding">
+                <li class="nav-item active">
+                    <a class="nav-link p-2" href="{% url 'blog-home' %}" aria-label="About">Home
+                        {% block home %}{% endblock %}
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link p-2" href="{% url 'blog-about' %}" aria-label="About">About
+                        {% block about %}{% endblock %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br/>
+<br/>
+<br/>
+<br/>
+<!-- No Java Script -->
+<div class="container-fluid">
+    <noscript class="display-3 text-warning">Sorry, your browser does not support JavaScript!</noscript>
+</div>
+<!-- Main -->
+<div class="container-fluid">
+    {% block content %}{% endblock %}
+</div>
+<!-- footer -->
+<footer class="container-fluid  text-center">
+    <hr>
+    IIT Dharwad &copy; 2019
+</footer>
+</body>
+<script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'node_modules/popper.js/dist/umd/popper.min.js' %}"></script>
+<script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'node_modules/@fortawesome/fontawesome-free/js/all.min.js' %}"></script>
+</html>
