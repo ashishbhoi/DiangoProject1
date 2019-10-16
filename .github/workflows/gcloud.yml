@@ -15,4 +15,4 @@ jobs:
           PROJECT_ID: ${{secrets.PROJECT_ID}}
           APPLICATION_CREDENTIALS: ${{secrets.SERVICE_ACCOUNT}}
         with:
-          args: gcloud --quiet app deploy app.yaml
+          args: app deploy app.yaml
