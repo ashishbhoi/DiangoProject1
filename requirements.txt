@@ -1,3 +1,4 @@
+libpq-dev==9.4.3
 Django==2.2.6
 psycopg2==2.8.3
 pytz==2019.3
