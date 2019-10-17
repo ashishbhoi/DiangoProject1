@@ -10,6 +10,8 @@ jobs:
       - uses: actions/checkout@v1
       - name: https redirect
         run: echo SECURE_SSL_REDIRECT = True >test.py && cat FirstProject/settings.py test.py > FirstProject/settings.pysettings.py && rm test.py
+      - name: pip packages
+        run: pip3 install -r requirements.txt
       - name: node packages
         run: python3 manage.py collectstatic && npm install @fortawesome/fontawesome-free --prefix static && npm install bootstrap --prefix static && npm install jquery --prefix static && npm install popper.js --prefix static
       - uses: exelban/gcloud@master
