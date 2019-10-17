@@ -8,12 +8,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: Add Database Details
+        run: |
+          /usr/bin/curl -o FirstProject/database.py \
+          --header "Authorization: token ${{ secrets.TOKEN }}" \
+            --header "Accept: application/vnd.github.v3.raw" \
+              --remote-name \
+                --location https://api.github.com/repos/AshishBhoi/private/contents/database.py
       - name: https redirect
         run: echo SECURE_SSL_REDIRECT = True >test.py && cat FirstProject/settings.py test.py > FirstProject/settings.pysettings.py && rm test.py
       - name: pip packages
         run: pip3 install -r requirements.txt
       - name: node packages
-        run: python3 manage.py collectstatic && npm install @fortawesome/fontawesome-free --prefix static && npm install bootstrap --prefix static && npm install jquery --prefix static && npm install popper.js --prefix static
+        run: mkdir blog/static && npm install @fortawesome/fontawesome-free --prefix blog/static && npm install bootstrap --prefix blog/static && npm install jquery --prefix blog/static && npm install popper.js --prefix blog/static
+      - name: collectstatic
+        run: python3 manage.py collectstatic
       - uses: exelban/gcloud@master
         env:
           PROJECT_ID: ${{secrets.PROJECT_ID}}

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import FirstProject.database as db
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -73,8 +74,12 @@ WSGI_APPLICATION = 'FirstProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': db.ENGINE,
+        'NAME': db.NAME,
+        'USER': db.USER,
+        'PASSWORD': db.PASSWORD,
+        'HOST': db.HOST,
+        'PORT': db.PORT,
     }
 }
 
