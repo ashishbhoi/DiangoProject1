@@ -53,7 +53,7 @@
                     </a>
                 </li>
                             <li class="nav-item active">
-                    <a class="nav-link p-2" href="/admin" aria-label="Admin">Admin
+                    <a class="nav-link p-2" href="{% url 'register' %}" aria-label="Register">Register
                     </a>
                 </li>
             </ul>
@@ -70,6 +70,14 @@
 </div>
 <!-- Main -->
 <div class="container">
+    {% if messages %}
+        {% for messages in messages %}
+            <div class="alert alert-{{ messages.tags }}">
+            {{ messages }}
+            </div>
+        {% endfor %}
+
+    {% endif %}
     {% block content %}{% endblock %}
 </div>
 <!-- footer -->
