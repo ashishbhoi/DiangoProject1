@@ -17,7 +17,7 @@ jobs:
               --remote-name \
                 --location https://api.github.com/repos/AshishBhoi/private/contents/database.py
       - name: https redirect
-        run: echo SECURE_SSL_REDIRECT = True >test.py && cat FirstProject/settings.py test.py > FirstProject/settings.pysettings.py && rm test.py
+        run: echo SECURE_SSL_REDIRECT = True >> FirstProject/settings.py
       - name: pip packages
         run: pip3 install --upgrade setuptools && pip3 install -r requirements.txt
       - name: node packages
