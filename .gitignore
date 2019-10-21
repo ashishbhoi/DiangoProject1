@@ -113,7 +113,7 @@ media/
 !**/migrations/__init__.py
 
 #extra Files
-Google\ Cloud\ Project-903fc26f0bfa.json
+Google\ Cloud\ Project.json
 /static/node_modules
 /static/admin
 static/package-lock.json
