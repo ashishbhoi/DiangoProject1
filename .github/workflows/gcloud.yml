@@ -24,6 +24,8 @@ jobs:
         run: mkdir blog/static && npm install @fortawesome/fontawesome-free --prefix blog/static && npm install bootstrap --prefix blog/static && npm install jquery --prefix blog/static && npm install popper.js --prefix blog/static
       - name: collectstatic
         run: python3 manage.py collectstatic
+      - name: create migration
+        run: python3 manage.py makemigrations && python3 manage.py migrate
       - uses: exelban/gcloud@master
         env:
           PROJECT_ID: ${{secrets.PROJECT_ID}}
