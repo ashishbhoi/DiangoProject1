@@ -114,8 +114,6 @@ media/
 
 #extra Files
 Google\ Cloud\ Project.json
-/static/node_modules
-/static/admin
-static/package-lock.json
+/static/
 /blog/static
 FirstProject/database.py
