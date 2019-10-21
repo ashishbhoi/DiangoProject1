@@ -32,7 +32,7 @@
 <!-- NavBar -->
 <nav class="navbar navbar-default fixed-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Django Project</a>
+        <a class="navbar-brand" href="{% url 'blog-home' %}">Django Project</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -40,23 +40,37 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-            </ul>
-            <ul class="nav navbar-nav navbar-left padding">
-                <li class="nav-item active">
-                    <a class="nav-link p-2" href="{% url 'blog-home' %}" aria-label="About">Home
-                        {% block home %}{% endblock %}
-                    </a>
-                </li>
                 <li class="nav-item active">
                     <a class="nav-link p-2" href="{% url 'blog-about' %}" aria-label="About">About
                         {% block about %}{% endblock %}
                     </a>
                 </li>
-                            <li class="nav-item active">
-                    <a class="nav-link p-2" href="{% url 'register' %}" aria-label="Register">Register
-                    </a>
-                </li>
             </ul>
+            {% if user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-left padding">
+                    <li class="nav-item active">
+                        <a class="nav-link p-2" href="{% url 'profile' %}" aria-label="Profile">Profile
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-left padding">
+                    <li class="nav-item active">
+                        <a class="nav-link p-2" href="{% url 'logout' %}" aria-label="Logout">Logout
+                        </a>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="nav navbar-nav navbar-left padding">
+                    <li class="nav-item active">
+                        <a class="nav-link p-2" href="{% url 'login' %}" aria-label="Login">Login
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link p-2" href="{% url 'register' %}" aria-label="Register">Register
+                        </a>
+                    </li>
+                </ul>
+            {% endif %}
         </div>
     </div>
 </nav>
@@ -73,7 +87,7 @@
     {% if messages %}
         {% for messages in messages %}
             <div class="alert alert-{{ messages.tags }}">
-            {{ messages }}
+                {{ messages }}
             </div>
         {% endfor %}
 
