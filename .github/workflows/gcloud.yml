@@ -18,8 +18,15 @@ jobs:
             --header "Accept: application/vnd.github.v3.raw" \
               --remote-name \
                 --location https://api.github.com/repos/AshishBhoi/private/contents/database.py
+      - name: Add Google Storage Details
+        run: |
+          /usr/bin/curl -o users/google-storage-api.json \
+          --header "Authorization: token ${{ secrets.TOKEN }}" \
+            --header "Accept: application/vnd.github.v3.raw" \
+              --remote-name \
+                --location https://api.github.com/repos/AshishBhoi/private/contents/google-storage-api.json
       - name: https redirect
-        run: echo SECURE_SSL_REDIRECT = True >> FirstProject/settings.py
+        run: echo SECURE_SSL_REDIRECT = True >> FirstProject/settings.py && echo DEFAULT_FILE_STORAGE = "'storages.backends.gcloud.GoogleCloudStorage'" >> FirstProject/settings.py && echo GS_BUCKET_NAME = "'django1'" >> FirstProject/settings.py
       - name: pip packages
         run: pip3 install --upgrade setuptools && pip3 install -r requirements.txt
       - name: node packages
