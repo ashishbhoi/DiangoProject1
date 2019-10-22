@@ -30,60 +30,61 @@
 </head>
 <body>
 <!-- NavBar -->
-<nav class="navbar navbar-default fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'blog-home' %}">Django Project</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link p-2" href="{% url 'blog-about' %}" aria-label="About">About
-                        {% block about %}{% endblock %}
-                    </a>
-                </li>
-            </ul>
-            {% if user.is_authenticated %}
-                <ul class="nav navbar-nav navbar-left padding">
+<header class="site-header">
+    <nav class="navbar navbar-default fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'blog-home' %}">Django Project</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link p-2" href="{% url 'profile' %}" aria-label="Profile">Profile
+                        <a class="nav-link p-2" href="{% url 'blog-about' %}" aria-label="About">About
+                            {% block about %}{% endblock %}
                         </a>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-left padding">
-                    <li class="nav-item active">
-                        <a class="nav-link p-2" href="{% url 'logout' %}" aria-label="Logout">Logout
-                        </a>
-                    </li>
-                </ul>
-            {% else %}
-                <ul class="nav navbar-nav navbar-left padding">
-                    <li class="nav-item active">
-                        <a class="nav-link p-2" href="{% url 'login' %}" aria-label="Login">Login
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link p-2" href="{% url 'register' %}" aria-label="Register">Register
-                        </a>
-                    </li>
-                </ul>
-            {% endif %}
+                {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-left padding">
+                        <li class="nav-item active">
+                            <a class="nav-link p-2" href="{% url 'profile' %}" aria-label="Profile">Profile
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left padding">
+                        <li class="nav-item active">
+                            <a class="nav-link p-2" href="{% url 'logout' %}" aria-label="Logout">Logout
+                            </a>
+                        </li>
+                    </ul>
+                {% else %}
+                    <ul class="nav navbar-nav navbar-left padding">
+                        <li class="nav-item active">
+                            <a class="nav-link p-2" href="{% url 'login' %}" aria-label="Login">Login
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link p-2" href="{% url 'register' %}" aria-label="Register">Register
+                            </a>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
         </div>
-    </div>
-</nav>
-<br/>
-<br/>
-<br/>
-<br/>
+    </nav>
+</header>
+<br />
+<br />
+<br />
 <!-- No Java Script -->
 <div class="container-fluid">
     <noscript class="display-3 text-warning">Sorry, your browser does not support JavaScript!</noscript>
 </div>
 <!-- Main -->
-<div class="container">
+<main role="main" class="container">
     {% if messages %}
         {% for messages in messages %}
             <div class="alert alert-{{ messages.tags }}">
@@ -92,8 +93,25 @@
         {% endfor %}
 
     {% endif %}
-    {% block content %}{% endblock %}
-</div>
+
+    <div class="row">
+        <div class="col-md-8">
+            {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-4">
+            <div class="content-section">
+                <h3>Our Sidebar</h3>
+                <p class="text-muted">You can put your information hear you'd like.</p>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-light">Latest Posts</li>
+                    <li class="list-group-item list-group-item-light">Announcement</li>
+                    <li class="list-group-item list-group-item-light">Calender</li>
+                    <li class="list-group-item list-group-item-light">etc</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
 <!-- footer -->
 <footer class="container-fluid  text-center">
     <hr>
