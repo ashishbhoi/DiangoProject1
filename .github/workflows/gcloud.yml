@@ -42,4 +42,4 @@ jobs:
         with:
           args: app deploy app.yaml
       - name: delete secrets
-        run: rm FirstProject/database.py
+        run: rm FirstProject/database.py && rm users/google-storage-api.json
