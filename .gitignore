@@ -115,7 +115,7 @@ media/
 #extra Files
 Google\ Cloud\ Project.json
 /static/*
-/blog/static
+/blog/static/*
 FirstProject/database.py
 /profile_pics
 /users/google-storage-api.json
