@@ -122,4 +122,10 @@
 <script src="{% static 'node_modules/popper.js/dist/umd/popper.min.js' %}"></script>
 <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'node_modules/@fortawesome/fontawesome-free/js/all.min.js' %}"></script>
+<script src="{% static 'service-worker.js' %}"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('static/service-worker.js')
+    }
+</script>
 </html>
