@@ -119,4 +119,4 @@ Google\ Cloud\ Project.json
 FirstProject/database.py
 /profile_pics
 /users/google-storage-api.json
-!/static/service-worker.js
+!/blog/static/service-worker.jsq
