@@ -28,7 +28,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: #DCDCDC">
 <!-- NavBar -->
 <header class="site-header">
     <nav class="navbar navbar-default fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -48,6 +48,12 @@
                     </li>
                 </ul>
                 {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-left padding">
+                        <li class="nav-item active">
+                            <a class="nav-link p-2" href="{% url 'post-create' %}" aria-label="New Post">New Post
+                            </a>
+                        </li>
+                    </ul>
                     <ul class="nav navbar-nav navbar-left padding">
                         <li class="nav-item active">
                             <a class="nav-link p-2" href="{% url 'profile' %}" aria-label="Profile">Profile
@@ -99,7 +105,7 @@
             {% block content %}{% endblock %}
         </div>
         <div class="col-md-4">
-            <div class="content-section">
+            <div class="content-section ">
                 <h3>Our Sidebar</h3>
                 <p class="text-muted">You can put your information hear you'd like.</p>
                 <ul class="list-group">
